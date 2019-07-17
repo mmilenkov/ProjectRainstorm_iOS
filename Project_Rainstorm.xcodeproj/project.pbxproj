@@ -12,6 +12,10 @@
 		3F5BE70A22DEF5CE00644B2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE70822DEF5CE00644B2C /* Main.storyboard */; };
 		3F5BE70C22DEF5CF00644B2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE70B22DEF5CF00644B2C /* Assets.xcassets */; };
 		3F5BE70F22DEF5CF00644B2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE70D22DEF5CF00644B2C /* LaunchScreen.storyboard */; };
+		3F5BE72122DEF9D500644B2C /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE72022DEF9D500644B2C /* DayViewController.swift */; };
+		3F5BE72422DEFA1D00644B2C /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE72322DEFA1D00644B2C /* WeekViewController.swift */; };
+		3F5BE72722DEFAF100644B2C /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE72622DEFAF100644B2C /* UIViewController.swift */; };
+		3F5BE72922DEFB3700644B2C /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE72822DEFB3700644B2C /* UIStoryboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		3F5BE70B22DEF5CF00644B2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F5BE70E22DEF5CF00644B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F5BE71022DEF5CF00644B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F5BE72022DEF9D500644B2C /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		3F5BE72322DEFA1D00644B2C /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		3F5BE72622DEFAF100644B2C /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3F5BE72822DEFB3700644B2C /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		3F5BE70322DEF5CE00644B2C /* Project_Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
+				3F5BE72522DEFADD00644B2C /* Extensions */,
 				3F5BE71822DEF64300644B2C /* Application Delegate */,
 				3F5BE71C22DEF7A600644B2C /* Assets */,
 				3F5BE71B22DEF79200644B2C /* Storyboards */,
@@ -74,6 +83,7 @@
 		3F5BE71922DEF71900644B2C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3F5BE71E22DEF9A700644B2C /* Weather View Controllers */,
 				3F5BE71A22DEF73600644B2C /* Root View Controller */,
 			);
 			path = "View Controllers";
@@ -110,6 +120,40 @@
 				3F5BE71022DEF5CF00644B2C /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F5BE71E22DEF9A700644B2C /* Weather View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE72222DEFA0C00644B2C /* Week View Controller */,
+				3F5BE71F22DEF9B500644B2C /* Day View Controller */,
+			);
+			path = "Weather View Controllers";
+			sourceTree = "<group>";
+		};
+		3F5BE71F22DEF9B500644B2C /* Day View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE72022DEF9D500644B2C /* DayViewController.swift */,
+			);
+			path = "Day View Controller";
+			sourceTree = "<group>";
+		};
+		3F5BE72222DEFA0C00644B2C /* Week View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE72322DEFA1D00644B2C /* WeekViewController.swift */,
+			);
+			path = "Week View Controller";
+			sourceTree = "<group>";
+		};
+		3F5BE72522DEFADD00644B2C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE72622DEFAF100644B2C /* UIViewController.swift */,
+				3F5BE72822DEFB3700644B2C /* UIStoryboard.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,8 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5BE72922DEFB3700644B2C /* UIStoryboard.swift in Sources */,
 				3F5BE70722DEF5CE00644B2C /* RootViewController.swift in Sources */,
 				3F5BE70522DEF5CE00644B2C /* AppDelegate.swift in Sources */,
+				3F5BE72422DEFA1D00644B2C /* WeekViewController.swift in Sources */,
+				3F5BE72122DEF9D500644B2C /* DayViewController.swift in Sources */,
+				3F5BE72722DEFAF100644B2C /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
