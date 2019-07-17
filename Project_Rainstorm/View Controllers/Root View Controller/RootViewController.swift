@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RootViewController.swift
 //  Project_Rainstorm
 //
 //  Created by Miloslav Milenkov on 17/07/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F5BE70522DEF5CE00644B2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE70422DEF5CE00644B2C /* AppDelegate.swift */; };
-		3F5BE70722DEF5CE00644B2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE70622DEF5CE00644B2C /* ViewController.swift */; };
+		3F5BE70722DEF5CE00644B2C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE70622DEF5CE00644B2C /* RootViewController.swift */; };
 		3F5BE70A22DEF5CE00644B2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE70822DEF5CE00644B2C /* Main.storyboard */; };
 		3F5BE70C22DEF5CF00644B2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE70B22DEF5CF00644B2C /* Assets.xcassets */; };
 		3F5BE70F22DEF5CF00644B2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE70D22DEF5CF00644B2C /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		3F5BE70122DEF5CE00644B2C /* Project_Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5BE70422DEF5CE00644B2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F5BE70622DEF5CE00644B2C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F5BE70622DEF5CE00644B2C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3F5BE70922DEF5CE00644B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F5BE70B22DEF5CF00644B2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F5BE70E22DEF5CF00644B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,62 @@
 		3F5BE70322DEF5CE00644B2C /* Project_Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
-				3F5BE70422DEF5CE00644B2C /* AppDelegate.swift */,
-				3F5BE70622DEF5CE00644B2C /* ViewController.swift */,
-				3F5BE70822DEF5CE00644B2C /* Main.storyboard */,
-				3F5BE70B22DEF5CF00644B2C /* Assets.xcassets */,
-				3F5BE70D22DEF5CF00644B2C /* LaunchScreen.storyboard */,
-				3F5BE71022DEF5CF00644B2C /* Info.plist */,
+				3F5BE71822DEF64300644B2C /* Application Delegate */,
+				3F5BE71C22DEF7A600644B2C /* Assets */,
+				3F5BE71B22DEF79200644B2C /* Storyboards */,
+				3F5BE71D22DEF7BA00644B2C /* Supporting Files */,
+				3F5BE71922DEF71900644B2C /* View Controllers */,
 			);
 			path = Project_Rainstorm;
+			sourceTree = "<group>";
+		};
+		3F5BE71822DEF64300644B2C /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE70422DEF5CE00644B2C /* AppDelegate.swift */,
+			);
+			path = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		3F5BE71922DEF71900644B2C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE71A22DEF73600644B2C /* Root View Controller */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3F5BE71A22DEF73600644B2C /* Root View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE70622DEF5CE00644B2C /* RootViewController.swift */,
+			);
+			path = "Root View Controller";
+			sourceTree = "<group>";
+		};
+		3F5BE71B22DEF79200644B2C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE70D22DEF5CF00644B2C /* LaunchScreen.storyboard */,
+				3F5BE70822DEF5CE00644B2C /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3F5BE71C22DEF7A600644B2C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE70B22DEF5CF00644B2C /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		3F5BE71D22DEF7BA00644B2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE71022DEF5CF00644B2C /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F5BE70722DEF5CE00644B2C /* ViewController.swift in Sources */,
+				3F5BE70722DEF5CE00644B2C /* RootViewController.swift in Sources */,
 				3F5BE70522DEF5CE00644B2C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Project_Rainstorm/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Project_Rainstorm/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -291,7 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "musala.Project-Rainstorm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -300,7 +348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Project_Rainstorm/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Project_Rainstorm/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "musala.Project-Rainstorm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
