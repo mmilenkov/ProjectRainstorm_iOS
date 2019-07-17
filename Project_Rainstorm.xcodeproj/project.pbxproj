@@ -25,7 +25,20 @@
 		3F5BE73D22DF2FC000644B2C /* WeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE73C22DF2FC000644B2C /* WeekViewModel.swift */; };
 		3F5BE73F22DF3B8A00644B2C /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE73E22DF3B8A00644B2C /* Styles.swift */; };
 		3F5BE74122DF42C500644B2C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE74022DF42C500644B2C /* UIImage.swift */; };
+		3F5BE75322DF496800644B2C /* DayViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE75222DF496800644B2C /* DayViewModelTests.swift */; };
+		3F5BE75622DF4AA600644B2C /* darksky.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BE75522DF4AA600644B2C /* darksky.json */; };
+		3F5BE75922DF4AD100644B2C /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE75822DF4AD100644B2C /* XCTestCase.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F5BE74B22DF488900644B2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F5BE6F922DEF5CE00644B2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F5BE70022DEF5CE00644B2C;
+			remoteInfo = Project_Rainstorm;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3F5BE70122DEF5CE00644B2C /* Project_Rainstorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_Rainstorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,10 +61,22 @@
 		3F5BE73C22DF2FC000644B2C /* WeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewModel.swift; sourceTree = "<group>"; };
 		3F5BE73E22DF3B8A00644B2C /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		3F5BE74022DF42C500644B2C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		3F5BE74622DF488900644B2C /* Project_RainstormTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project_RainstormTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F5BE74A22DF488900644B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F5BE75222DF496800644B2C /* DayViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModelTests.swift; sourceTree = "<group>"; };
+		3F5BE75522DF4AA600644B2C /* darksky.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = darksky.json; sourceTree = "<group>"; };
+		3F5BE75822DF4AD100644B2C /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3F5BE6FE22DEF5CE00644B2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F5BE74322DF488900644B2C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				3F5BE70322DEF5CE00644B2C /* Project_Rainstorm */,
+				3F5BE74722DF488900644B2C /* Project_RainstormTests */,
 				3F5BE70222DEF5CE00644B2C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				3F5BE70122DEF5CE00644B2C /* Project_Rainstorm.app */,
+				3F5BE74622DF488900644B2C /* Project_RainstormTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +258,49 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		3F5BE74722DF488900644B2C /* Project_RainstormTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE75722DF4AC000644B2C /* Extensions */,
+				3F5BE75422DF4A9800644B2C /* Stubs */,
+				3F5BE75122DF493E00644B2C /* Test Cases */,
+				3F5BE75022DF48A600644B2C /* Supporting Files */,
+			);
+			path = Project_RainstormTests;
+			sourceTree = "<group>";
+		};
+		3F5BE75022DF48A600644B2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE74A22DF488900644B2C /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F5BE75122DF493E00644B2C /* Test Cases */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE75222DF496800644B2C /* DayViewModelTests.swift */,
+			);
+			path = "Test Cases";
+			sourceTree = "<group>";
+		};
+		3F5BE75422DF4A9800644B2C /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE75522DF4AA600644B2C /* darksky.json */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		3F5BE75722DF4AC000644B2C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE75822DF4AD100644B2C /* XCTestCase.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -251,6 +321,24 @@
 			productReference = 3F5BE70122DEF5CE00644B2C /* Project_Rainstorm.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3F5BE74522DF488900644B2C /* Project_RainstormTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F5BE74D22DF488900644B2C /* Build configuration list for PBXNativeTarget "Project_RainstormTests" */;
+			buildPhases = (
+				3F5BE74222DF488900644B2C /* Sources */,
+				3F5BE74322DF488900644B2C /* Frameworks */,
+				3F5BE74422DF488900644B2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F5BE74C22DF488900644B2C /* PBXTargetDependency */,
+			);
+			name = Project_RainstormTests;
+			productName = Project_RainstormTests;
+			productReference = 3F5BE74622DF488900644B2C /* Project_RainstormTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -263,6 +351,11 @@
 				TargetAttributes = {
 					3F5BE70022DEF5CE00644B2C = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					3F5BE74522DF488900644B2C = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+						TestTargetID = 3F5BE70022DEF5CE00644B2C;
 					};
 				};
 			};
@@ -280,6 +373,7 @@
 			projectRoot = "";
 			targets = (
 				3F5BE70022DEF5CE00644B2C /* Project_Rainstorm */,
+				3F5BE74522DF488900644B2C /* Project_RainstormTests */,
 			);
 		};
 /* End PBXProject section */
@@ -292,6 +386,14 @@
 				3F5BE70F22DEF5CF00644B2C /* LaunchScreen.storyboard in Resources */,
 				3F5BE70C22DEF5CF00644B2C /* Assets.xcassets in Resources */,
 				3F5BE70A22DEF5CE00644B2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F5BE74422DF488900644B2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5BE75622DF4AA600644B2C /* darksky.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +422,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3F5BE74222DF488900644B2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5BE75922DF4AD100644B2C /* XCTestCase.swift in Sources */,
+				3F5BE75322DF496800644B2C /* DayViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F5BE74C22DF488900644B2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F5BE70022DEF5CE00644B2C /* Project_Rainstorm */;
+			targetProxy = 3F5BE74B22DF488900644B2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F5BE70822DEF5CE00644B2C /* Main.storyboard */ = {
@@ -492,6 +611,47 @@
 			};
 			name = Release;
 		};
+		3F5BE74E22DF488900644B2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Project_RainstormTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "musala.Project-RainstormTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project_Rainstorm.app/Project_Rainstorm";
+			};
+			name = Debug;
+		};
+		3F5BE74F22DF488900644B2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Project_RainstormTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "musala.Project-RainstormTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project_Rainstorm.app/Project_Rainstorm";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -509,6 +669,15 @@
 			buildConfigurations = (
 				3F5BE71422DEF5CF00644B2C /* Debug */,
 				3F5BE71522DEF5CF00644B2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F5BE74D22DF488900644B2C /* Build configuration list for PBXNativeTarget "Project_RainstormTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F5BE74E22DF488900644B2C /* Debug */,
+				3F5BE74F22DF488900644B2C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
