@@ -11,6 +11,7 @@ import UIKit
 final class RootViewController: UIViewController {
     
     private enum AlertType {
+        case notAuthorizedForLocationData
         case noWeatherDataAvailable
     }
     
@@ -69,8 +70,16 @@ final class RootViewController: UIViewController {
     private func setupViewModel(with viewModel: RootViewModel) {
         viewModel.didFetchWeatherData = {
             [weak self] (weatherData, error) in
-            if let _ = error {
-                self?.presentAlert(of: .noWeatherDataAvailable)
+            if let error = error {
+                let alertType: AlertType
+                switch error {
+                case .notAuthorizedForLocationData:
+                    alertType = .notAuthorizedForLocationData
+                case .noWeatherDataAvailable:
+                    alertType = .noWeatherDataAvailable
+                }
+                
+                self?.presentAlert(of: alertType)
             } else if let weatherData = weatherData {
                 let dayViewModel = DayViewModel(weatherData: weatherData.current)
                 self?.dayViewController.viewModel = dayViewModel
@@ -88,6 +97,9 @@ final class RootViewController: UIViewController {
         case .noWeatherDataAvailable:
             title = "Unable to Fetch Weather Data"
             message = "The application is unable to fetch weather data. Please make sure your device is connected over Wi-Fi or cellular."
+        case .notAuthorizedForLocationData:
+            title = "Unable to Fetch Weather Data For Your Location"
+            message = "You have not granted permission for the application to use your Location. A default location will be displayed. You can access to your current location in the Settings application"
         }
         
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)

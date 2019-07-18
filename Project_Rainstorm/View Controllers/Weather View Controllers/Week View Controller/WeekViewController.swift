@@ -9,6 +9,23 @@
 import UIKit
 
 final class WeekViewController: UIViewController {
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            tableView.isHidden = true
+            tableView.dataSource = self
+            tableView.separatorInset = .zero
+            tableView.estimatedRowHeight = 60.0
+            tableView.showsVerticalScrollIndicator = false
+            tableView.autoresizesSubviews = true
+        }
+    }
+    
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            activityIndicatorView.startAnimating()
+            activityIndicatorView.hidesWhenStopped = true
+        }
+    }
     
     var viewModel: WeekViewModel? {
         didSet {
@@ -27,10 +44,32 @@ final class WeekViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .red
+        view.backgroundColor = .white
     }
     
     private func setupViewModel(with viewModel: WeekViewModel) {
-        print(viewModel)
+        activityIndicatorView.stopAnimating()
+        
+        tableView.reloadData()
+        tableView.isHidden = false
     }
+}
+
+
+extension WeekViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.numberOfDays ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeekDayTableViewCell.reuseIdentifier,for: indexPath) as? WeekDayTableViewCell else {
+            fatalError()
+        }
+        guard let viewModel = viewModel else { fatalError() }
+        
+        cell.configure(with: viewModel.viewModel(for: indexPath.row))
+        return cell
+    }
+    
+    
 }
