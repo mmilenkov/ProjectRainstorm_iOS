@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import CoreLocation
 
 struct WeatherRequest {
     let baseURL: URL
-    let location: CLLocation
+    let location: Location
     
     var latitude: Double {
-        return location.coordinate.latitude
+        return location.latitude
     }
     var longitude: Double {
-        return location.coordinate.longitude
+        return location.longitude
     }
     var url: URL {
         return baseURL.appendingPathComponent("\(latitude),\(longitude)")

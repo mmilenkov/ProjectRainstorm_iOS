@@ -7,33 +7,30 @@
 //
 
 import Foundation
-import CoreLocation
 
 class RootViewModel: NSObject {
     enum WeatherDataError: Error {
         case noWeatherDataAvailable
         case notAuthorizedForLocationData
+        case failedToRequestLocation
     }
     
     typealias DidFetchWeatherDataCompletion = (WeatherData?,WeatherDataError?) -> Void
     
     var didFetchWeatherData: DidFetchWeatherDataCompletion?
     
-    private lazy var locationManager: CLLocationManager = {
-    let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        return locationManager
-        
-    }()
+    private let locationService: LocationService
     
-    override init() {
-        super.init()
-        fetchWeatherData(for: Defaults.location)
+    init(locationService: LocationService) {
+        self.locationService = locationService
         
+        super.init()
+        
+        fetchWeatherData(for: Defaults.location)
         fetchLocation()
     }
     
-    private func fetchWeatherData(for location: CLLocation) {
+    private func fetchWeatherData(for location: Location) {
         let weatherRequest = WeatherRequest(baseURL:WeatherService.authenticatedBaseUrl, location: location)
         
         URLSession.shared.dataTask(with: weatherRequest.url) {
@@ -67,34 +64,18 @@ class RootViewModel: NSObject {
     }
     
     private func fetchLocation() {
-        locationManager.requestLocation()
-        
-    }
-    
-}
-
-extension RootViewModel: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("location failed")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        } else if status == .authorizedWhenInUse {
-            fetchLocation()
-        } else {
-            didFetchWeatherData?(nil, .notAuthorizedForLocationData)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else {
-            return
+        locationService.fetchLocation {
+            [weak self] (location, error) in
+            if let error = error {
+                self?.didFetchWeatherData?(nil,.notAuthorizedForLocationData)
+            } else if let location = location {
+                self?.fetchWeatherData(for: location)
+            } else {
+                print("Failed to fetch location")
+                self?.didFetchWeatherData?(nil, .failedToRequestLocation)
+            }
         }
         
-        fetchWeatherData(for: location)
     }
     
 }

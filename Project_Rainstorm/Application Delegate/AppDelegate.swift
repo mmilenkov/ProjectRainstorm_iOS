@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let rootViewController = window?.rootViewController as? RootViewController else {
             fatalError("Something messed up")
         }
-        let rootViewModel = RootViewModel()
+        let rootViewModel = RootViewModel(locationService: LocationManager())
         rootViewController.viewModel = rootViewModel
         
         return true

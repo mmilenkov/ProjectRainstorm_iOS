@@ -13,6 +13,7 @@ final class RootViewController: UIViewController {
     private enum AlertType {
         case notAuthorizedForLocationData
         case noWeatherDataAvailable
+        case failedToRequestLocation
     }
     
     var viewModel: RootViewModel? {
@@ -77,6 +78,8 @@ final class RootViewController: UIViewController {
                     alertType = .notAuthorizedForLocationData
                 case .noWeatherDataAvailable:
                     alertType = .noWeatherDataAvailable
+                case .failedToRequestLocation:
+                    alertType = .failedToRequestLocation
                 }
                 
                 self?.presentAlert(of: alertType)
@@ -100,6 +103,9 @@ final class RootViewController: UIViewController {
         case .notAuthorizedForLocationData:
             title = "Unable to Fetch Weather Data For Your Location"
             message = "You have not granted permission for the application to use your Location. A default location will be displayed. You can access to your current location in the Settings application"
+        case .failedToRequestLocation:
+            title = "Unable to Request Location"
+            message = "The application is unable to fetch your location due to a technical issue"
         }
         
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import CoreLocation
 
 enum Defaults {
-    static let location = CLLocation(latitude: 37.335114, longitude: -122.008928)
+    static let location = Location(latitude: 37.335114, longitude: -122.008928)
 }
 
 enum WeatherService {
