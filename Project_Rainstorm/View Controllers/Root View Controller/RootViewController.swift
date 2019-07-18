@@ -23,7 +23,7 @@ final class RootViewController: UIViewController {
         }
     }
     
-    private let dayViewController: DayViewController = {
+    private var dayViewController: DayViewController = {
         guard let dayViewController = UIStoryboard.main.instantiateViewController(withIdentifier: DayViewController.storyboardIdentifier) as? DayViewController else {
             fatalError("Unable to instantiate Day View Controller")
         }
@@ -32,10 +32,11 @@ final class RootViewController: UIViewController {
         return dayViewController
     }()
     
-    private let weekViewController: WeekViewController = {
+    private lazy var weekViewController: WeekViewController = {
         guard let weekViewController = UIStoryboard.main.instantiateViewController(withIdentifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
             fatalError("Unable to instantiate Week View Controller")
         }
+        weekViewController.delegate = self
         weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         return weekViewController
@@ -89,6 +90,8 @@ final class RootViewController: UIViewController {
                         alertType = .failedToRequestLocation
                 }
                 self?.presentAlert(of: alertType)
+                self?.dayViewController.viewModel = nil
+                self?.weekViewController.viewModel = nil
             }
         }
     }
@@ -113,4 +116,10 @@ final class RootViewController: UIViewController {
         present(ac, animated: true)
     }
 
+}
+
+extension RootViewController: WeekViewControllerDelegate {
+    func controllerDidRefresh(_ controller: WeekViewController) {
+        viewModel?.refresh()
+    }    
 }

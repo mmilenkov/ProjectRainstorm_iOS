@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol WeekViewControllerDelegate: class {
+    func controllerDidRefresh(_ controller: WeekViewController)
+}
+
 final class WeekViewController: UIViewController {
     @IBOutlet var tableView: UITableView! {
         didSet {
@@ -17,9 +21,9 @@ final class WeekViewController: UIViewController {
             tableView.estimatedRowHeight = 60.0
             tableView.showsVerticalScrollIndicator = false
             tableView.autoresizesSubviews = true
+            tableView.refreshControl = refreshControl
         }
     }
-    
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView! {
         didSet {
             activityIndicatorView.startAnimating()
@@ -29,13 +33,19 @@ final class WeekViewController: UIViewController {
     
     var viewModel: WeekViewModel? {
         didSet {
-            guard let viewModel = viewModel else {
-                return
+            refreshControl.endRefreshing()
+            if let viewModel = viewModel {
+                setupViewModel(with: viewModel)
             }
-            
-            setupViewModel(with: viewModel)
         }
     }
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.base
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+    weak var delegate: WeekViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +79,10 @@ extension WeekViewController: UITableViewDataSource {
         
         cell.configure(with: viewModel.viewModel(for: indexPath.row))
         return cell
+    }
+    
+    @objc private func refresh(_ sender: UIRefreshControl) {
+        delegate?.controllerDidRefresh(self)
     }
     
     
