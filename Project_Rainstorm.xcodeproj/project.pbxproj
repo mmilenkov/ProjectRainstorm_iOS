@@ -36,6 +36,11 @@
 		3F5BE76722E04E3E00644B2C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE76622E04E3E00644B2C /* Location.swift */; };
 		3F5BE76922E04F8D00644B2C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE76822E04F8D00644B2C /* LocationService.swift */; };
 		3F5BE76C22E050CF00644B2C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE76B22E050CF00644B2C /* LocationManager.swift */; };
+		3F5BE76E22E0690300644B2C /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE76D22E0690300644B2C /* RootViewModelTests.swift */; };
+		3F5BE77122E069A100644B2C /* MockLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77022E069A100644B2C /* MockLocationService.swift */; };
+		3F5BE77322E06D9600644B2C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77222E06D9600644B2C /* NetworkService.swift */; };
+		3F5BE77522E06DEE00644B2C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77422E06DEE00644B2C /* NetworkManager.swift */; };
+		3F5BE77722E06F0800644B2C /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77622E06F0800644B2C /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +87,11 @@
 		3F5BE76622E04E3E00644B2C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3F5BE76822E04F8D00644B2C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3F5BE76B22E050CF00644B2C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3F5BE76D22E0690300644B2C /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
+		3F5BE77022E069A100644B2C /* MockLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationService.swift; sourceTree = "<group>"; };
+		3F5BE77222E06D9600644B2C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3F5BE77422E06DEE00644B2C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3F5BE77622E06F0800644B2C /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +269,7 @@
 			children = (
 				3F5BE73622DF2BAA00644B2C /* WeatherData.swift */,
 				3F5BE76822E04F8D00644B2C /* LocationService.swift */,
+				3F5BE77222E06D9600644B2C /* NetworkService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -283,6 +294,7 @@
 		3F5BE74722DF488900644B2C /* Project_RainstormTests */ = {
 			isa = PBXGroup;
 			children = (
+				3F5BE76F22E0699700644B2C /* Mocks */,
 				3F5BE75722DF4AC000644B2C /* Extensions */,
 				3F5BE75422DF4A9800644B2C /* Stubs */,
 				3F5BE75122DF493E00644B2C /* Test Cases */,
@@ -305,6 +317,7 @@
 				3F5BE75222DF496800644B2C /* DayViewModelTests.swift */,
 				3F5BE76222E03FD200644B2C /* WeekViewModelTests.swift */,
 				3F5BE76422E0462F00644B2C /* WeekDayViewModelTests.swift */,
+				3F5BE76D22E0690300644B2C /* RootViewModelTests.swift */,
 			);
 			path = "Test Cases";
 			sourceTree = "<group>";
@@ -345,8 +358,18 @@
 			isa = PBXGroup;
 			children = (
 				3F5BE76B22E050CF00644B2C /* LocationManager.swift */,
+				3F5BE77422E06DEE00644B2C /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		3F5BE76F22E0699700644B2C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE77022E069A100644B2C /* MockLocationService.swift */,
+				3F5BE77622E06F0800644B2C /* MockNetworkService.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +475,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5BE77522E06DEE00644B2C /* NetworkManager.swift in Sources */,
+				3F5BE77322E06D9600644B2C /* NetworkService.swift in Sources */,
 				3F5BE72922DEFB3700644B2C /* UIStoryboard.swift in Sources */,
 				3F5BE73F22DF3B8A00644B2C /* Styles.swift in Sources */,
 				3F5BE76922E04F8D00644B2C /* LocationService.swift in Sources */,
@@ -480,6 +505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5BE76E22E0690300644B2C /* RootViewModelTests.swift in Sources */,
+				3F5BE77722E06F0800644B2C /* MockNetworkService.swift in Sources */,
+				3F5BE77122E069A100644B2C /* MockLocationService.swift in Sources */,
 				3F5BE76322E03FD200644B2C /* WeekViewModelTests.swift in Sources */,
 				3F5BE75922DF4AD100644B2C /* XCTestCase.swift in Sources */,
 				3F5BE75322DF496800644B2C /* DayViewModelTests.swift in Sources */,

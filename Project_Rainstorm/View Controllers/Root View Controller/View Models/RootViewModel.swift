@@ -23,23 +23,19 @@ class RootViewModel: NSObject {
     typealias FetchWeatherDataCompletion = (WeatherDataResult) -> Void
     
     var didFetchWeatherData: FetchWeatherDataCompletion?
-    
     private let locationService: LocationService
+    private let networkService: NetworkService
     
-    init(locationService: LocationService) {
+    init(locationService: LocationService, networkService: NetworkService) {
         self.locationService = locationService
-        
+        self.networkService = networkService
         super.init()
-        
-        fetchWeatherData(for: Defaults.location)
-        fetchLocation()
         setupNotificationHandling()
     }
     
     private func fetchWeatherData(for location: Location) {
         let weatherRequest = WeatherRequest(baseURL:WeatherService.authenticatedBaseUrl, location: location)
-        
-        URLSession.shared.dataTask(with: weatherRequest.url) {
+        networkService.fetchData(with: weatherRequest.url) {
             [weak self] (data, response, error) in
             if let response = response as? HTTPURLResponse {
                 print("Status code: \(response.statusCode)")
@@ -67,7 +63,7 @@ class RootViewModel: NSObject {
                     self?.didFetchWeatherData?(WeatherDataResult.failure(.noWeatherDataAvailable))
                 }
             }
-        }.resume()
+        }
         
     }
     

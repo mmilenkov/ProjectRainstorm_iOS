@@ -47,6 +47,8 @@ final class RootViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         setupChildViewControllers()
+        
+        viewModel?.refresh()
     }
     
     private func setupChildViewControllers() {
@@ -105,7 +107,7 @@ final class RootViewController: UIViewController {
             message = "The application is unable to fetch weather data. Please make sure your device is connected over Wi-Fi or cellular."
         case .notAuthorizedForLocationData:
             title = "Unable to Fetch Weather Data For Your Location"
-            message = "You have not granted permission for the application to use your Location. A default location will be displayed. You can access to your current location in the Settings application"
+            message = "You have not granted permission for the application to use your Location. You can access to your current location in the Settings application"
         case .failedToRequestLocation:
             title = "Unable to Request Location"
             message = "The application is unable to fetch your location due to a technical issue"
