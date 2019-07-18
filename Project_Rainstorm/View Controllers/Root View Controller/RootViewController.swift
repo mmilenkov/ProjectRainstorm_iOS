@@ -70,25 +70,25 @@ final class RootViewController: UIViewController {
     
     private func setupViewModel(with viewModel: RootViewModel) {
         viewModel.didFetchWeatherData = {
-            [weak self] (weatherData, error) in
-            if let error = error {
-                let alertType: AlertType
-                switch error {
-                case .notAuthorizedForLocationData:
-                    alertType = .notAuthorizedForLocationData
-                case .noWeatherDataAvailable:
-                    alertType = .noWeatherDataAvailable
-                case .failedToRequestLocation:
-                    alertType = .failedToRequestLocation
-                }
-                
-                self?.presentAlert(of: alertType)
-            } else if let weatherData = weatherData {
+            [weak self] (result) in
+            switch result {
+            case .success(let weatherData):
                 let dayViewModel = DayViewModel(weatherData: weatherData.current)
                 self?.dayViewController.viewModel = dayViewModel
                 
                 let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
                 self?.weekViewController.viewModel = weekViewModel
+            case .failure(let error):
+                let alertType: AlertType
+                switch error {
+                    case .notAuthorizedForLocationData:
+                        alertType = .notAuthorizedForLocationData
+                    case .noWeatherDataAvailable:
+                        alertType = .noWeatherDataAvailable
+                    case .failedToRequestLocation:
+                        alertType = .failedToRequestLocation
+                }
+                self?.presentAlert(of: alertType)
             }
         }
     }

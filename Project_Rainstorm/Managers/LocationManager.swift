@@ -39,7 +39,7 @@ extension LocationManager: CLLocationManagerDelegate {
         } else if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         } else {
-            didFetchLocation?(nil, .notAuthorizedForLocationData)
+            didFetchLocation?(LocationServiceResult.failure(.notAuthorizedForLocationData))
             didFetchLocation = nil
         }
     }
@@ -48,7 +48,7 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-        didFetchLocation?(Location(location: location),nil)
+        didFetchLocation?(LocationServiceResult.success(Location(location: location)))
         didFetchLocation = nil
     }
 }

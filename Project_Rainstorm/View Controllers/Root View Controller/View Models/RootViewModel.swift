@@ -15,9 +15,14 @@ class RootViewModel: NSObject {
         case failedToRequestLocation
     }
     
-    typealias DidFetchWeatherDataCompletion = (WeatherData?,WeatherDataError?) -> Void
+    enum WeatherDataResult {
+        case success(WeatherData)
+        case failure(WeatherDataError)
+    }
     
-    var didFetchWeatherData: DidFetchWeatherDataCompletion?
+    typealias FetchWeatherDataCompletion = (WeatherDataResult) -> Void
+    
+    var didFetchWeatherData: FetchWeatherDataCompletion?
     
     private let locationService: LocationService
     
@@ -42,21 +47,20 @@ class RootViewModel: NSObject {
             DispatchQueue.main.async {
                 if let error = error {
                     print(error.localizedDescription)
-                    
-                    self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
+                    self?.didFetchWeatherData?(WeatherDataResult.failure(.noWeatherDataAvailable))
                 } else if let data = data {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .secondsSince1970
                     
                     do {
                         let response = try decoder.decode(DarkSkyResponse.self, from: data)
-                        self?.didFetchWeatherData?(response,nil)
+                        self?.didFetchWeatherData?(WeatherDataResult.success(response))
                     } catch {
                         print("Failed to parse json")
-                        self?.didFetchWeatherData?(nil, .noWeatherDataAvailable)
+                        self?.didFetchWeatherData?(WeatherDataResult.failure(.noWeatherDataAvailable))
                     }
                 } else {
-                    self?.didFetchWeatherData?(nil,nil)
+                    self?.didFetchWeatherData?(WeatherDataResult.failure(.noWeatherDataAvailable))
                 }
             }
         }.resume()
@@ -65,14 +69,13 @@ class RootViewModel: NSObject {
     
     private func fetchLocation() {
         locationService.fetchLocation {
-            [weak self] (location, error) in
-            if let error = error {
-                self?.didFetchWeatherData?(nil,.notAuthorizedForLocationData)
-            } else if let location = location {
-                self?.fetchWeatherData(for: location)
-            } else {
-                print("Failed to fetch location")
-                self?.didFetchWeatherData?(nil, .failedToRequestLocation)
+            [weak self] (result) in
+            switch result {
+            case .success(let location):
+                 self?.fetchWeatherData(for: location)
+            case.failure(let error):
+                print("\(error)")
+                self?.didFetchWeatherData?(WeatherDataResult.failure(.notAuthorizedForLocationData))
             }
         }
         
