@@ -27,13 +27,13 @@ struct WeekDayViewModel {
     }
     
     var temperature: String {
-        let min = String(format: "%.1f F", weatherData.temperatureMin)
-        let max = String(format: "%.1f F", weatherData.temperatureMax)
+        let min = String(format: "%.1f °C", ValueConverter.toCelsius(value: weatherData.temperatureMin))
+        let max = String(format: "%.1f °C", ValueConverter.toCelsius(value: weatherData.temperatureMax))
         return "\(min) - \(max)"
     }
     
     var windSpeed: String {
-        return String(format: "%.f MPH", weatherData.windSpeed)
+        return String(format: "%.f KPH", ValueConverter.toKPH(value: weatherData.windSpeed))
     }
     
     var image: UIImage? {

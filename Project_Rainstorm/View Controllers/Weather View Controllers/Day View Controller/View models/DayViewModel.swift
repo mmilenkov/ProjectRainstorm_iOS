@@ -29,11 +29,11 @@ struct DayViewModel {
     }
     
     var temperature: String {
-        return String(format: "%.1f F", weatherData.temperature)
+        return String(format: "%.1f °C", ValueConverter.toCelsius(value: weatherData.temperature))
     }
     
     var windSpeed: String {
-        return String(format: "%.f MPH", weatherData.windSpeed)
+        return String(format: "%.f KPH", ValueConverter.toKPH(value: weatherData.windSpeed))
     }
     
     var image: UIImage? {

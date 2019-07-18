@@ -41,6 +41,7 @@
 		3F5BE77322E06D9600644B2C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77222E06D9600644B2C /* NetworkService.swift */; };
 		3F5BE77522E06DEE00644B2C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77422E06DEE00644B2C /* NetworkManager.swift */; };
 		3F5BE77722E06F0800644B2C /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77622E06F0800644B2C /* MockNetworkService.swift */; };
+		3F5BE77C22E08E5E00644B2C /* ValueConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5BE77B22E08E5E00644B2C /* ValueConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		3F5BE77222E06D9600644B2C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3F5BE77422E06DEE00644B2C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3F5BE77622E06F0800644B2C /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		3F5BE77B22E08E5E00644B2C /* ValueConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		3F5BE70322DEF5CE00644B2C /* Project_Rainstorm */ = {
 			isa = PBXGroup;
 			children = (
+				3F5BE77A22E08E3800644B2C /* Utilities */,
 				3F5BE76A22E050BE00644B2C /* Managers */,
 				3F5BE73522DF2B9C00644B2C /* Protocols */,
 				3F5BE72D22DF0EFC00644B2C /* Configuration */,
@@ -372,6 +375,14 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		3F5BE77A22E08E3800644B2C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3F5BE77B22E08E5E00644B2C /* ValueConverter.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -487,6 +498,7 @@
 				3F5BE72122DEF9D500644B2C /* DayViewController.swift in Sources */,
 				3F5BE74122DF42C500644B2C /* UIImage.swift in Sources */,
 				3F5BE75E22E03A2400644B2C /* WeekDayViewModel.swift in Sources */,
+				3F5BE77C22E08E5E00644B2C /* ValueConverter.swift in Sources */,
 				3F5BE73722DF2BAA00644B2C /* WeatherData.swift in Sources */,
 				3F5BE72C22DF0DC500644B2C /* WeatherRequest.swift in Sources */,
 				3F5BE76122E03EC400644B2C /* WeekDayRepresentable.swift in Sources */,
