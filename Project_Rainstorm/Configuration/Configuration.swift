@@ -19,3 +19,13 @@ enum WeatherService {
         return baseUrl.appendingPathComponent(apiKey)
     }
 }
+
+enum Configuration {
+    static var refreshThreshold: TimeInterval {
+        #if DEBUG
+        return 10.0
+        #else
+        return 10.0 * 60.0
+        #endif
+    }
+}

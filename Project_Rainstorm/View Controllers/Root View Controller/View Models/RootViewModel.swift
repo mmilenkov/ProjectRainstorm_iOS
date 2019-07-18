@@ -33,6 +33,7 @@ class RootViewModel: NSObject {
         
         fetchWeatherData(for: Defaults.location)
         fetchLocation()
+        setupNotificationHandling()
     }
     
     private func fetchWeatherData(for location: Location) {
@@ -54,6 +55,9 @@ class RootViewModel: NSObject {
                     
                     do {
                         let response = try decoder.decode(DarkSkyResponse.self, from: data)
+                        
+                        UserDefaults.didFetchWeatherData = Date()
+                        
                         self?.didFetchWeatherData?(WeatherDataResult.success(response))
                     } catch {
                         print("Failed to parse json")
@@ -78,7 +82,40 @@ class RootViewModel: NSObject {
                 self?.didFetchWeatherData?(WeatherDataResult.failure(.notAuthorizedForLocationData))
             }
         }
-        
     }
     
+    private func setupNotificationHandling() {
+        NotificationCenter.default
+            .addObserver(forName: .NSExtensionHostWillEnterForeground, object: nil, queue: OperationQueue.main) {
+                [weak self] (_) in
+                guard let didFetchWeatherData = UserDefaults.didFetchWeatherData else {
+                    self?.refresh()
+                    return
+                }
+                
+                if Date().timeIntervalSince(didFetchWeatherData) > Configuration.refreshThreshold {
+                    self?.refresh()
+                }
+            }
+}
+    
+    private func refresh() {
+        fetchLocation()
+    }
+    
+}
+
+extension UserDefaults {
+    private enum Keys {
+        static let didFetchWeatherData = "didFetchWeatherData"
+    }
+    
+    fileprivate class var didFetchWeatherData: Date? {
+        get {
+            return UserDefaults.standard.object(forKey: Keys.didFetchWeatherData) as? Date
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Keys.didFetchWeatherData)
+        }
+    }
 }
