@@ -10,6 +10,7 @@ import Foundation
 
 enum LocationServiceError {
     case notAuthorizedForLocationData
+    case unableToFetchDataForLocation
 }
 
 enum LocationServiceResult {
@@ -21,4 +22,6 @@ protocol LocationService {
     typealias FetchLocationCompletion = (LocationServiceResult) -> Void
     
     func fetchLocation(completion: @escaping FetchLocationCompletion)
+    
+    func getLocationForName(name location: String, completion: @escaping FetchLocationCompletion)
 }

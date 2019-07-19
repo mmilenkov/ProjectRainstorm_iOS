@@ -44,10 +44,33 @@ final class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        setupView()
         setupChildViewControllers()
-        
+        viewModel?.refresh()
+    }
+    
+    private func setupView() {
+        title = "RainStorm"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(displaySearchAlertController))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(displayCurrentLocationWeatherData))
+    }
+    
+    @objc func displaySearchAlertController() {
+        let ac = UIAlertController(title: "Location",
+                                   message: "Please enter the name of the location you would like to see the weather for: ",
+                                   preferredStyle: .alert)
+        ac.addTextField()
+        let searchAction = UIAlertAction(title: "Search", style: .default) {
+            [weak self] _ in
+            self?.viewModel?.refreshForLocation(name: ac.textFields?[0].text)
+        }
+        ac.addAction(searchAction)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+    }
+    
+    @objc func displayCurrentLocationWeatherData() {
         viewModel?.refresh()
     }
     

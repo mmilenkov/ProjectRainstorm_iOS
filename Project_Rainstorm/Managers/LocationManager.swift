@@ -59,3 +59,31 @@ fileprivate extension Location {
         self.longitude = location.coordinate.longitude
     }
 }
+
+extension LocationManager {
+    
+    func getLocationForName(name location: String, completion: @escaping LocationManager.FetchLocationCompletion){
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(location) {
+            [weak self] placemarks, error in
+            self?.didFetchLocation = completion
+            guard error == nil else {
+                self?.didFetchLocation?(LocationServiceResult.failure(.unableToFetchDataForLocation))
+                return
+            }
+            
+            guard let placemark = placemarks?[0] else {
+                self?.didFetchLocation?(LocationServiceResult.failure(.unableToFetchDataForLocation))
+                return
+            }
+            
+            guard let location = placemark.location else {
+                self?.didFetchLocation?(LocationServiceResult.failure(.unableToFetchDataForLocation))
+                return
+            }
+            
+            self?.didFetchLocation?(LocationServiceResult.success(Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)))
+            }
+    }
+}

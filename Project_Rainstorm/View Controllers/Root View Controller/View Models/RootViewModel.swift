@@ -99,6 +99,25 @@ class RootViewModel: NSObject {
         fetchLocation()
     }
     
+    func refreshForLocation(name location: String?) {
+        guard let location = location else { return }
+        fetchSpecificLocation(name: location)
+    }
+    
+    private func fetchSpecificLocation(name location: String) {
+        locationService.getLocationForName(name: location) {
+            [weak self] (result) in
+            switch result {
+            case .success(let location):
+                self?.fetchWeatherData(for: location)
+                
+            case .failure(let error):
+                print("\(error)")
+                self?.didFetchWeatherData?(WeatherDataResult.failure(.noWeatherDataAvailable))
+            }
+    }
+    }
+    
 }
 
 extension UserDefaults {

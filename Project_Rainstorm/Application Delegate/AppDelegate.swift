@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Dependency injection
-        guard let rootViewController = window?.rootViewController as? RootViewController else {
+        guard let rootViewController = window?.rootViewController?.children[0] as? RootViewController else {
             fatalError("Something messed up")
         }
         let rootViewModel = RootViewModel(locationService: LocationManager(), networkService: NetworkManager())
