@@ -20,7 +20,7 @@ struct DayViewModel {
     }
     
     var time: String {
-        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateFormat = "HH:mm a"
         return dateFormatter.string(from: weatherData.time)
     }
     
