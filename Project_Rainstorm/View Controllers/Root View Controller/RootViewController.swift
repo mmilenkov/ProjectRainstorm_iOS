@@ -53,7 +53,11 @@ final class RootViewController: UIViewController {
     private func setupView() {
         title = "RainStorm"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(displaySearchAlertController))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(displayCurrentLocationWeatherData))
+    }
+    
+    private func reloadTitle() {
+        title = viewModel?.locationName ?? "RainStorm"
+        viewModel?.locationName = nil
     }
     
     @objc func displaySearchAlertController() {
@@ -68,10 +72,6 @@ final class RootViewController: UIViewController {
         ac.addAction(searchAction)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
-    }
-    
-    @objc func displayCurrentLocationWeatherData() {
-        viewModel?.refresh()
     }
     
     private func setupChildViewControllers() {
@@ -101,9 +101,9 @@ final class RootViewController: UIViewController {
             case .success(let weatherData):
                 let dayViewModel = DayViewModel(weatherData: weatherData.current)
                 self?.dayViewController.viewModel = dayViewModel
-                
                 let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
                 self?.weekViewController.viewModel = weekViewModel
+                self?.reloadTitle()
             case .failure(let error):
                 let alertType: AlertType
                 switch error {
@@ -146,5 +146,6 @@ final class RootViewController: UIViewController {
 extension RootViewController: WeekViewControllerDelegate {
     func controllerDidRefresh(_ controller: WeekViewController) {
         viewModel?.refresh()
+        reloadTitle()
     }    
 }

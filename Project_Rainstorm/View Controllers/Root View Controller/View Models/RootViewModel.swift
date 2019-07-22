@@ -25,6 +25,7 @@ class RootViewModel: NSObject {
     var didFetchWeatherData: FetchWeatherDataCompletion?
     private let locationService: LocationService
     private let networkService: NetworkService
+    var locationName: String?
     
     init(locationService: LocationService, networkService: NetworkService) {
         self.locationService = locationService
@@ -73,6 +74,9 @@ class RootViewModel: NSObject {
             switch result {
             case .success(let location):
                  self?.fetchWeatherData(for: location)
+                 if let locationName = location.locationName {
+                    self?.locationName = locationName
+                }
             case.failure(let error):
                 print("\(error)")
                 self?.didFetchWeatherData?(WeatherDataResult.failure(.notAuthorizedForLocationData))
@@ -110,7 +114,9 @@ class RootViewModel: NSObject {
             switch result {
             case .success(let location):
                 self?.fetchWeatherData(for: location)
-                
+                if let locationName = location.locationName {
+                    self?.locationName = locationName
+                }
             case .failure(let error):
                 print("\(error)")
                 self?.didFetchWeatherData?(WeatherDataResult.failure(.noWeatherDataAvailable))

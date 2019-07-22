@@ -9,7 +9,7 @@
 import Foundation
 
 enum Defaults {
-    static let location = Location(latitude: 37.335114, longitude: -122.008928)
+    static let location = Location(latitude: 37.335114, longitude: -122.008928, locationName: nil)
 }
 
 enum WeatherService {

@@ -57,6 +57,7 @@ fileprivate extension Location {
     init(location: CLLocation) {
         self.latitude = location.coordinate.latitude
         self.longitude = location.coordinate.longitude
+        self.locationName = nil
     }
 }
 
@@ -82,8 +83,7 @@ extension LocationManager {
                 self?.didFetchLocation?(LocationServiceResult.failure(.unableToFetchDataForLocation))
                 return
             }
-            
-            self?.didFetchLocation?(LocationServiceResult.success(Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)))
+            self?.didFetchLocation?(LocationServiceResult.success(Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, locationName: placemark.locality)))
             }
     }
 }
