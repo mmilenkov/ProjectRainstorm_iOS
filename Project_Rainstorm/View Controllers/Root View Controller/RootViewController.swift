@@ -52,12 +52,19 @@ final class RootViewController: UIViewController {
     
     private func setupView() {
         title = "RainStorm"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(displaySearchAlertController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(displaySearchAlertController))
+        navigationItem.rightBarButtonItem?.tintColor = .base
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "undo"), style: .plain, target: self, action: #selector(reloadToCurrentLocation))
+        navigationItem.leftBarButtonItem?.tintColor = .base
     }
     
     private func reloadTitle() {
         title = viewModel?.locationName ?? "RainStorm"
         viewModel?.locationName = nil
+    }
+    
+    @objc func reloadToCurrentLocation() {
+        viewModel?.refresh()
     }
     
     @objc func displaySearchAlertController() {
@@ -145,7 +152,11 @@ final class RootViewController: UIViewController {
 
 extension RootViewController: WeekViewControllerDelegate {
     func controllerDidRefresh(_ controller: WeekViewController) {
-        viewModel?.refresh()
-        reloadTitle()
+        guard let title = title else { return }
+        if !(title.elementsEqual("RainStorm")) {
+            viewModel?.refreshForLocation(name: title)
+        } else {
+            viewModel?.refresh()
+        }
     }    
 }
