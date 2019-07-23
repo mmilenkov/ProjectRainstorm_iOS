@@ -77,7 +77,7 @@ extension WeekViewController: UITableViewDataSource {
         }
         guard let viewModel = viewModel else { fatalError() }
         
-        cell.configure(with: viewModel.viewModel(for: indexPath.row))
+        cell.configure(with: viewModel.viewModel(for: indexPath.row), count: indexPath.row)
         return cell
     }
     

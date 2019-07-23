@@ -52,8 +52,12 @@ class WeekDayTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func configure(with representable: WeekDayRepresentable) {
-        dayLabel.text = representable.day
+    func configure(with representable: WeekDayRepresentable, count: Int) {
+        if count == 0 {
+            dayLabel.text = "Today"
+        } else {
+            dayLabel.text = representable.day
+        }
         dateLabel.text = representable.date
         iconImageView.image = representable.image
         windSpeedLabel.text = representable.windSpeed
